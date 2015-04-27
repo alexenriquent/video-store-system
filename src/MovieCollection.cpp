@@ -192,6 +192,10 @@ Movie* MovieCollection::getItemAddress(MovieContainer* root, const std::string t
     }
 }
 
+void MovieCollection::allMovies(std::vector<Movie>& movies) const {
+    allMovies(root, movies);
+}
+
 void MovieCollection::allMovies(MovieContainer* root, std::vector<Movie>& movies) const {
     if (root == NULL) {
         return;
@@ -203,37 +207,6 @@ void MovieCollection::allMovies(MovieContainer* root, std::vector<Movie>& movies
     if (root->getRChild() != NULL) {
         allMovies(root->getRChild(), movies);
     }
-}
-
-std::vector<Movie> MovieCollection::findTopTenMovies() const {
-    return findTopTenMovies(root);
-}
-
-std::vector<Movie> MovieCollection::findTopTenMovies(MovieContainer* root) const {
-    std::vector<Movie> movies;
-    std::vector<Movie> topTenMovies;
-    allMovies(root, movies);
-    if (movies.size() > 1) {
-        for (std::vector<std::string>::size_type i = 0; i < movies.size(); i++) {
-            for (std::vector<std::string>::size_type j = 1; j < movies.size(); j++) {
-                if (movies[j].getNumRentals() > movies[j-1].getNumRentals()) {
-                    Movie temp = movies[j];
-                    movies[j] = movies[j-1];
-                    movies[j-1] = temp;
-                }
-            }
-        }
-    }
-    if (movies.size() < 10) {
-        for (std::vector<std::string>::size_type i = 0; i < movies.size(); i++) {
-            topTenMovies.push_back(movies[i]);
-        }
-    } else {
-        for (std::vector<std::string>::size_type i = 0; i < 10; i++) {
-            topTenMovies.push_back(movies[i]);
-        }
-    }
-    return topTenMovies;
 }
 
 std::string MovieCollection::formatString(std::string str) {

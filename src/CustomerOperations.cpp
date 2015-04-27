@@ -11,9 +11,17 @@ CustomerOperations::~CustomerOperations() {
 }
 
 void CustomerOperations::browseAllMovies(MovieCollection& movies) {
+    std::vector<Movie> movieList;
+    movies.allMovies(movieList);
+    sortMovieList(movieList);
+
     cout << "\n\t\tALL MOVIES" << endl << endl;
     cout << "\t\t" << setw(15) << left << "Title" << setw(20) << right << "Number of DVDs" << endl << endl;
-    movies.inOrderTraversal();
+
+    for (std::vector<std::string>::size_type i = 0; i < movieList.size(); i++) {
+        cout << "\t\t" << setw(15) << left << formatString(movieList[i].getTitle()) << setw(20) << right
+             << movieList[i].getNumDVDs() - movieList[i].getRecord().size() << endl;
+    }
 }
 
 void CustomerOperations::displayMovieInfo(MovieCollection& movies) {
@@ -102,7 +110,12 @@ void CustomerOperations::listCurrentlyRentedMovies(Customer* customer) {
 }
 
 void CustomerOperations::displayTopTenMovies(MovieCollection& movies) {
-    std::vector<Movie> topTenMovies = movies.findTopTenMovies();
+    std::vector<Movie> movieList;
+    std::vector<Movie> topTenMovies;
+    movies.allMovies(movieList);
+    sortMovieListByNumRentals(movieList);
+    addTopTenMovies(movieList, topTenMovies);
+
     cout << "\n\n\t\tTOP 10 RENTED MOVIES" << endl << endl;
     cout << "\t\t" << setw(15) << left << "Title" << setw(20) << right << "Number of Rentals" << endl << endl;
 
@@ -111,6 +124,46 @@ void CustomerOperations::displayTopTenMovies(MovieCollection& movies) {
              << topTenMovies[i].getNumRentals() << endl;
     }
     cout << endl;
+}
+
+void CustomerOperations::sortMovieList(std::vector<Movie>& movieList) {
+    if (movieList.size() > 1) {
+        for (std::vector<std::string>::size_type i = 0; i < movieList.size(); i++) {
+            for (std::vector<std::string>::size_type j = 1; j < movieList.size(); j++) {
+                if (movieList[j].getTitle().compare(movieList[j-1].getTitle()) < 0) {
+                    Movie temp = movieList[j];
+                    movieList[j] = movieList[j-1];
+                    movieList[j-1] = temp;
+                }
+            }
+        }
+    }
+}
+
+void CustomerOperations::sortMovieListByNumRentals(std::vector<Movie>& movieList) {
+    if (movieList.size() > 1) {
+        for (std::vector<std::string>::size_type i = 0; i < movieList.size(); i++) {
+            for (std::vector<std::string>::size_type j = 1; j < movieList.size(); j++) {
+                if (movieList[j].getNumRentals() > movieList[j-1].getNumRentals()) {
+                    Movie temp = movieList[j];
+                    movieList[j] = movieList[j-1];
+                    movieList[j-1] = temp;
+                }
+            }
+        }
+    }
+}
+
+void CustomerOperations::addTopTenMovies(std::vector<Movie> movieList, std::vector<Movie>& topTenMovies) {
+    if (movieList.size() < 10) {
+        for (std::vector<std::string>::size_type i = 0; i < movieList.size(); i++) {
+            topTenMovies.push_back(movieList[i]);
+        }
+    } else {
+        for (std::vector<std::string>::size_type i = 0; i < 10; i++) {
+            topTenMovies.push_back(movieList[i]);
+        }
+    }
 }
 
 int CustomerOperations::confirmRenting(Movie* movieAddress) {

@@ -11,6 +11,9 @@
 class CustomerOperations {
 
      private:
+        void sortMovieList(std::vector<Movie>& movieList);
+        void sortMovieListByNumRentals(std::vector<Movie>& movieList);
+        void addTopTenMovies(std::vector<Movie> movieList, std::vector<Movie>& topTenMovies);
         int confirmRenting(Movie* movieAddress);
         int confirmReturning(Movie* movieAddress);
         std::string lowerCase(std::string str);

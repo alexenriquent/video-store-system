@@ -24,7 +24,6 @@ class MovieCollection {
         void clear(const MovieContainer* root);
 
         Movie* getItemAddress(MovieContainer* root, const std::string title);
-        std::vector<Movie> findTopTenMovies(MovieContainer* root) const;
         void allMovies(MovieContainer* root, std::vector<Movie>& movies) const;
         std::string formatString(std::string str);
 
@@ -41,8 +40,8 @@ class MovieCollection {
         void postOrderTraversal();
         void clear();
 
+        void allMovies(std::vector<Movie>& movies) const;
         Movie* getItemAddress(const std::string title);
-        std::vector<Movie> findTopTenMovies() const;
 
 };
 

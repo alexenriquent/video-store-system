@@ -88,3 +88,90 @@
 	<MovieCollection.h>
 	<Customer.h>
 
+1430115787 source:c:\users\alex\desktop\repository\videostoresystem\main.cpp
+	<iostream>
+	<stdlib.h>
+	<string>
+	<iomanip>
+	<conio.h>
+	<limits>
+	<cctype>
+	"MovieCollection.h"
+	"CustomerCollection.h"
+	"StaffOperations.h"
+	"CustomerOperations.h"
+
+1430130582 c:\users\alex\desktop\repository\videostoresystem\include\moviecollection.h
+	<iostream>
+	<iomanip>
+	<cstddef>
+	<string>
+	<vector>
+	<sstream>
+	<algorithm>
+	"MovieContainer.h"
+
+1429440865 c:\users\alex\desktop\repository\videostoresystem\include\moviecontainer.h
+	<string>
+	<cstddef>
+	"Movie.h"
+
+1430011810 c:\users\alex\desktop\repository\videostoresystem\include\movie.h
+	<iostream>
+	<cctype>
+	<algorithm>
+	<vector>
+	<string>
+
+1429937189 c:\users\alex\desktop\repository\videostoresystem\include\customercollection.h
+	<string>
+	<vector>
+	"Customer.h"
+
+1429937241 c:\users\alex\desktop\repository\videostoresystem\include\customer.h
+	<vector>
+	<sstream>
+	<iterator>
+	<string>
+	<cctype>
+	<algorithm>
+	"Movie.h"
+
+1430115629 c:\users\alex\desktop\repository\videostoresystem\include\staffoperations.h
+	<iostream>
+	<iomanip>
+	<string>
+	<vector>
+	<limits>
+	"MovieCollection.h"
+	"CustomerCollection.h"
+
+1430131463 c:\users\alex\desktop\repository\videostoresystem\include\customeroperations.h
+	<iostream>
+	<string>
+	<algorithm>
+	<limits>
+	<MovieCollection.h>
+	<Customer.h>
+
+1429937301 source:c:\users\alex\desktop\repository\videostoresystem\src\customer.cpp
+	"Customer.h"
+
+1429937254 source:c:\users\alex\desktop\repository\videostoresystem\src\customercollection.cpp
+	"CustomerCollection.h"
+
+1430130613 source:c:\users\alex\desktop\repository\videostoresystem\src\customeroperations.cpp
+	"CustomerOperations.h"
+
+1430011865 source:c:\users\alex\desktop\repository\videostoresystem\src\movie.cpp
+	"Movie.h"
+
+1430130594 source:c:\users\alex\desktop\repository\videostoresystem\src\moviecollection.cpp
+	"MovieCollection.h"
+
+1429440868 source:c:\users\alex\desktop\repository\videostoresystem\src\moviecontainer.cpp
+	"MovieContainer.h"
+
+1430127147 source:c:\users\alex\desktop\repository\videostoresystem\src\staffoperations.cpp
+	"StaffOperations.h"
+

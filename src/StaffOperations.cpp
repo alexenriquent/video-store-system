@@ -58,7 +58,7 @@ void StaffOperations::addDVDsOfNewMovie(MovieCollection& movies) {
         cout << "\t\tClassification: ";
         getline(cin, classification);
         correctClassification = isClassification(classification);
-        if (!correctGenre) {
+        if (!correctClassification) {
             displayErrorMessage();
         }
     } while (!correctClassification);
@@ -334,7 +334,7 @@ void StaffOperations::displayGenres() {
 
 void StaffOperations::displayClassifications() {
     cout << "\n\t\tGenres may be General (G), Parental Guidance (PG)," << endl;
-    cout << "\t\tMature (M15+) or Mature Accompanied (MA15+)" << endl;
+    cout << "\t\tMature (M15+) or Mature Accompanied (MA15+)" << endl << endl;
     cout << "\t\tEnter only its abbreviation i.e. G, PG, M15+ or MA15+" << endl << endl;
 }
 
