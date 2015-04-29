@@ -1,5 +1,8 @@
 /// \file CustomerOperations.cpp
 /// \brief Implementation for Sub-menu for the customer operations.
+/// \author Thanat Chokwijitkul n9234900
+/// \author Xui Koh
+/// \date April, 2015
 
 #include "CustomerOperations.h"
 
@@ -7,12 +10,12 @@ using namespace std;
 
 /// \brief Initialises this CustomerOperation object.
 CustomerOperations::CustomerOperations() {
-
+    // Empty constructor
 }
 
 /// \brief Destroys this CustomerOperation object.
 CustomerOperations::~CustomerOperations() {
-
+    // Empty destructor
 }
 
 /// \brief Displays all the movies available in the movie collection.
@@ -54,7 +57,7 @@ void CustomerOperations::displayMovieInfo(MovieCollection& movies) {
 
 /// \brief Rents a DVD specified by a movie's title.
 /// \param movies MovieCollection& - Reference of the movie collection.
-/// \param customers CustomerCollection& - Reference of the customer collection.
+/// \param customer Customer* - Pointer to a customer.
 void CustomerOperations::rentDVD(MovieCollection& movies, Customer* customer) {
     std::string title;
     cout << "\n\n\t\tRENT DVD" << endl << endl;
@@ -92,7 +95,7 @@ void CustomerOperations::rentDVD(MovieCollection& movies, Customer* customer) {
 
 /// \brief Returns a DVD specified by a movie's title.
 /// \param movies MovieCollection& - Reference of the movie collection.
-/// \param customers CustomerCollection& - Reference of the customer collection.
+/// \param customer Customer* - Pointer to a customer.
 void CustomerOperations::returnDVD(MovieCollection& movies, Customer* customer) {
     std::string title;
     cout << "\n\n\t\tRETURN DVD" << endl << endl;
@@ -120,7 +123,7 @@ void CustomerOperations::returnDVD(MovieCollection& movies, Customer* customer) 
 }
 
 /// \brief Displays a list of currently rented movies.
-/// \param customers CustomerCollection& - Reference of the customer collection.
+/// \param customer Customer* - Pointer to a customer.
 void CustomerOperations::listCurrentlyRentedMovies(Customer* customer) {
     cout << "\n\n\t\tCURRENTLY RENTED MOVIES" << endl;
     customer->displayRecord();
@@ -220,7 +223,7 @@ int CustomerOperations::confirmRenting(Movie* movieAddress) {
 }
 
 /// \brief Confirms DVD returning information.
-/// \param movieAddress Movie* - Memory address of a movie.
+/// \param movieAddress Movie* - Pointer to a memory address of a movie.
 /// \return int - Customer's confirmation.
 int CustomerOperations::confirmReturning(Movie* movieAddress) {
     int confirm;
@@ -267,12 +270,12 @@ std::string CustomerOperations::formatString(std::string str) {
     return str;
 }
 
-/// \brief Displays an error message for any invalid input.
+/// \brief Displays the error message for any invalid input.
 void CustomerOperations::displayErrorMessage() {
     cout << "\n\t\tERROR: Invalid Input" << endl;
 }
 
-/// \brief Displays an error message when the movie collection does not contain the specified movie.
+/// \brief Displays the error message when the movie collection does not contain the specified movie.
 void CustomerOperations::displayMovieNotFoundMessage() {
     cout << "\n\t\tMovie not found" << endl << endl;
 }

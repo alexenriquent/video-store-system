@@ -1,5 +1,8 @@
 /// \file MovieContainer.cpp
-/// \brief Implementation of MovieContainer ADT
+/// \brief Implementation of MovieContainer ADT.
+/// \author Thanat Chokwijitkul n9234900
+/// \author Xui Koh
+/// \date April, 2015
 
 #include "MovieContainer.h"
 
@@ -13,7 +16,7 @@ MovieContainer::MovieContainer(Movie item) {
 
 /// \brief Destroys this MovieContainer.
 MovieContainer::~MovieContainer() {
-
+    // Empty destructor
 }
 
 /// \brief Gets the item field of this MovieContainer.

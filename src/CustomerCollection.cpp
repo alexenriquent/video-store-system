@@ -1,16 +1,19 @@
 /// \file CustomerCollection.cpp
 /// \brief Implementation for CustomerCollection ADT to represent a collection of customers.
+/// \author Thanat Chokwijitkul n9234900
+/// \author Xui Koh
+/// \date April, 2015
 
 #include "CustomerCollection.h"
 
 /// \brief Initialises this CustomerCollection.
 CustomerCollection::CustomerCollection() {
-
+    // Empty constructor
 }
 
 /// \brief Destroys this CustomerCollection.
 CustomerCollection::~CustomerCollection() {
-
+    // Empty destructor
 }
 
 /// \brief Adds a customer object into this CustomerCollection.

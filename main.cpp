@@ -1,5 +1,8 @@
 /// \file main.cpp
 /// \brief Main menu for the video store management information system.
+/// \author Thanat Chokwijitkul n9234900
+/// \author Xui Koh
+/// \date April, 2015
 
 #include <iostream>
 #include <stdlib.h>
@@ -21,23 +24,23 @@ using namespace std;
 static string STAFF_USERNAME = "staff";
 static string STAFF_PASSWORD = "today123";
 
-void displayProgramName();
-void displayLoginMenu();
-int getLoginOption();
-void displayLoginScreen(int loginOption);
-bool staffLogin(int loginOption);
+void displayProgramName(); // Function to display the program name.
+void displayLoginMenu(); // Function to display login menu options.
+int getLoginOption(); // Function to get a selected menu option from user.
+void displayLoginScreen(int loginOption); // Function to display login screen.
+bool staffLogin(int loginOption); // Function for staff authentication.
 bool customerLogin(CustomerCollection& customers,
-                   int& customerIndex, int loginOption);
-string getUsername();
-string getStaffPassword();
-string getCustomerPassword();
-void displayStaffMenu();
-void displayCustomerMenu();
-int getStaffOption();
-int getCustomerOption();
-int confirmLogout();
-void displayContinueMessage();
-void displayErrorMessage();
+                   int& customerIndex, int loginOption); // Function for customer authentication.
+string getUsername(); // Function to get a username from user.
+string getStaffPassword(); // Function to get staff's password from user.
+string getCustomerPassword(); // Function to get a customer's password from user.
+void displayStaffMenu(); // Function to display staff sub-menu options.
+void displayCustomerMenu(); // Function to display customer sub-menu options.
+int getStaffOption(); // Function to get a selected staff menu option from user.
+int getCustomerOption(); // Function to get a selected customer menu option from user.
+int confirmLogout(); // Function for logout confirmation.
+void displayContinueMessage(); // Function to display the continue message.
+void displayErrorMessage(); // Function to display the error message for any invalid input.
 
 int main() {
 
@@ -230,7 +233,7 @@ void displayLoginMenu(){
 }
 
 /// \brief Prompts the user a login menu selection.
-/// \return int - a menu selected by user.
+/// \return int - Option selected by user.
 int getLoginOption() {
     int loginOption;
      do {
@@ -375,7 +378,7 @@ void displayCustomerMenu() {
 }
 
 /// \brief Prompts the user a staff options selection.
-/// \return int - a menu selected by user.
+/// \return int - Option selected by user.
 int getStaffOption() {
     int staffOption;
     do {
@@ -399,7 +402,7 @@ int getStaffOption() {
 }
 
 /// \brief Prompts the user a customer options selection.
-/// \return int - a menu selected by user.
+/// \return int - Option selected by user.
 int getCustomerOption() {
     int customerOption;
     do {
@@ -454,7 +457,7 @@ void displayContinueMessage() {
     system("CLS");
 }
 
-/// \brief Displays an error for any invalid input.
+/// \brief Displays the error for any invalid input.
 void displayErrorMessage() {
     cout << "\t\t\tERROR: Invalid Input" << endl;
 }

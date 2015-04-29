@@ -1,5 +1,8 @@
 /// \file Customer.cpp
 /// \brief Implementation for Customer ADT to model a customer.
+/// \author Thanat Chokwijitkul n9234900
+/// \author Xui Koh
+/// \date April, 2015
 
 #include "Customer.h"
 

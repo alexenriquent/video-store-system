@@ -1,5 +1,8 @@
 /// \file MovieCollection.cpp
-/// \brief Implementation for MovieCollection ADT to represent a collection of movie
+/// \brief Implementation for MovieCollection ADT to represent a collection of movie.
+/// \author Thanat Chokwijitkul n9234900
+/// \author Xui Koh
+/// \date April, 2015
 
 #include "MovieCollection.h"
 
@@ -13,7 +16,7 @@ MovieCollection::MovieCollection() {
 
 /// \brief Destroys this MovieCollection.
 MovieCollection::~MovieCollection() {
-
+    // Empty destructor
 }
 
 /// \brief Checks if the collection does not contain any movie.

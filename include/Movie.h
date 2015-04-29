@@ -1,5 +1,8 @@
 /// \file Movie.h
 /// \brief Specification for Movie ADT to model a movie.
+/// \author Thanat Chokwijitkul n9234900
+/// \author Xui Koh
+/// \date April, 2015
 
 #ifndef MOVIE_H
 #define MOVIE_H

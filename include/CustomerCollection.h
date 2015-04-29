@@ -1,5 +1,8 @@
 /// \file CustomerCollection.h
 /// \brief Specification for CustomerCollection ADT to represent a collection of customers.
+/// \author Thanat Chokwijitkul n9234900
+/// \author Xui Koh
+/// \date April, 2015
 
 #ifndef CUSTOMERCOLLECTION_H
 #define CUSTOMERCOLLECTION_H

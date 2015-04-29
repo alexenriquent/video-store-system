@@ -1,5 +1,8 @@
 /// \file MovieCollection.h
 /// \brief Specification for MovieCollection ADT to represent a collection of movie
+/// \author Thanat Chokwijitkul n9234900
+/// \author Xui Koh
+/// \date April, 2015
 
 #ifndef MOVIECOLLECTION_H
 #define MOVIECOLLECTION_H

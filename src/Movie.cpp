@@ -1,5 +1,8 @@
 /// \file Movie.cpp
 /// \brief Implementation for Movie ADT to model a movie.
+/// \author Thanat Chokwijitkul n9234900
+/// \author Xui Koh
+/// \date April, 2015
 
 #include "Movie.h"
 

@@ -1,5 +1,8 @@
 /// \file CustomerOperations.h
 /// \brief Specification for Sub-menu for the customer operations.
+/// \author Thanat Chokwijitkul n9234900
+/// \author Xui Koh
+/// \date April, 2015
 
 #ifndef CUSTOMEROPERATIONS_H
 #define CUSTOMEROPERATIONS_H
@@ -35,10 +38,10 @@ class CustomerOperations {
         /// Formats the specified string for printing.
         std::string formatString(std::string str);
 
-        /// Display an error message.
+        /// Display the error message for any invalid input.
         void displayErrorMessage();
 
-        /// Display an error message if movie not found.
+        /// Display the movie not found message.
         void displayMovieNotFoundMessage();
 
     public:

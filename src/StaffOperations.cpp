@@ -1,5 +1,8 @@
 /// \file StaffOperations.cpp
 /// \brief Implementation for Sub-menu for the staff operations.
+/// \author Thanat Chokwijitkul n9234900
+/// \author Xui Koh
+/// \date April, 2015
 
 #include "StaffOperations.h"
 
@@ -11,12 +14,12 @@ const std::string classifications[NUMBER_OF_CLASSIFICATIONS] = {"G", "PG", "M15+
 
 /// \brief Initialises this StaffOperation object.
 StaffOperations::StaffOperations() {
-
+    // Empty constructor
 }
 
 /// \brief Destroys this StaffOperation object.
 StaffOperations::~StaffOperations() {
-
+    // Empty destructor
 }
 
 /// \brief Adds a new movie to the movie collection.
@@ -416,7 +419,7 @@ std::string StaffOperations::formatString(std::string str) {
     return str;
 }
 
-/// \brief Displays an error message for any invalid input.
+/// \brief Displays the error message for any invalid input.
 void StaffOperations::displayErrorMessage() {
     cout << "\n\t\tERROR: Invalid Input" << endl;
 }
