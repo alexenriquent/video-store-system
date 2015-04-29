@@ -1,3 +1,6 @@
+/// \file StaffOperations.cpp
+/// \brief Implementation for Sub-menu for the staff operations.
+
 #include "StaffOperations.h"
 
 using namespace std;
@@ -6,14 +9,18 @@ const std::string genres[NUMBER_OF_GENRES] = {"drama", "adventure", "family", "a
                                               "comedy", "animated", "thriller", "other"};
 const std::string classifications[NUMBER_OF_CLASSIFICATIONS] = {"G", "PG", "M15+", "MA15+"};
 
+/// \brief Initialises this StaffOperation object.
 StaffOperations::StaffOperations() {
 
 }
 
+/// \brief Destroys this StaffOperation object.
 StaffOperations::~StaffOperations() {
 
 }
 
+/// \brief Adds a new movie to the movie collection.
+/// \param movies MovieCollection& - Reference of the movie collection.
 void StaffOperations::addDVDsOfNewMovie(MovieCollection& movies) {
     std::string title;
     std::string starring;
@@ -98,6 +105,8 @@ void StaffOperations::addDVDsOfNewMovie(MovieCollection& movies) {
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
+/// \brief Adds DVDs of an existing movie in the movie collection.
+/// \param movies MovieCollection& - Reference of the movie collection.
 void StaffOperations::addDVDsOfExistingMovie(MovieCollection& movies) {
     std::string title;
     int numDVDs;
@@ -128,6 +137,8 @@ void StaffOperations::addDVDsOfExistingMovie(MovieCollection& movies) {
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
+/// \brief remove DVDs of an movie from the movie collection while the movie is not being rented.
+/// \param movies MovieCollection& - Reference of the movie collection.
 void StaffOperations::removeDVDs(MovieCollection& movies) {
     std::string title;
     int numDVDs;
@@ -169,6 +180,8 @@ void StaffOperations::removeDVDs(MovieCollection& movies) {
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
+/// \brief Removes a movie from the movie collection while the movie is not being rented.
+/// \param movies MovieCollection& - Reference of the movie collection.
 void StaffOperations::removeMovie(MovieCollection& movies) {
     std::string title;
     cout << "\n\n\t\tREMOVE A MOVIE" << endl << endl;
@@ -193,6 +206,8 @@ void StaffOperations::removeMovie(MovieCollection& movies) {
     }
 }
 
+/// \brief Adds a new customer to the customer collection.
+/// \param customers CustomerCollection& - Reference of the customer collection.
 void StaffOperations::registerCustomer(CustomerCollection& customers) {
     std::string name;
     std::string address;
@@ -249,6 +264,8 @@ void StaffOperations::registerCustomer(CustomerCollection& customers) {
     cout << "\n\t\t\"" << formatString(name) << "\" has been registered." << endl << endl;
 }
 
+/// \brief Removes an existing customer from the customer collection while the customer is not renting any movie.
+/// \param customers CustomerCollection& - Reference of the customer collection.
 void StaffOperations::removeCustomer(CustomerCollection& customers) {
     std::string name;
     cout << "\n\n\t\tREMOVE A CUSTOMER" << endl << endl;
@@ -277,6 +294,8 @@ void StaffOperations::removeCustomer(CustomerCollection& customers) {
     }
 }
 
+/// \brief Find a customer's phone number given the customer's name.
+/// \param customers CustomerCollection& - Reference of the customer collection.
 void StaffOperations::findCustomerPhoneNumber(CustomerCollection& customers) {
     std::string name;
     cout << "\n\n\t\tFIND A CUSTOMER'S PHONE NUMBER" << endl << endl;
@@ -300,6 +319,8 @@ void StaffOperations::findCustomerPhoneNumber(CustomerCollection& customers) {
     }
 }
 
+/// \brief Finds a movie's rental record given the movie's title.
+/// \param movies MovieCollection& - Reference of the movie collection.
 void StaffOperations::findRentalRecord(MovieCollection& movies) {
     std::string title;
     cout << "\n\n\t\tDISPLAY A MOVIE'S RECORD" << endl << endl;
@@ -327,17 +348,23 @@ void StaffOperations::findRentalRecord(MovieCollection& movies) {
     }
 }
 
+/// \brief Display all the available genres the system can use to categorise a movie.
 void StaffOperations::displayGenres() {
     cout << "\n\t\tGenres may be Drama, Adventure, Family, Action," << endl;
     cout << "\t\tSci-Fi, Comedy, Animated, Thriller or Other" << endl << endl;
 }
 
+/// \brief Display all the available classification the system can use to classify a movie.
 void StaffOperations::displayClassifications() {
     cout << "\n\t\tGenres may be General (G), Parental Guidance (PG)," << endl;
     cout << "\t\tMature (M15+) or Mature Accompanied (MA15+)" << endl << endl;
     cout << "\t\tEnter only its abbreviation i.e. G, PG, M15+ or MA15+" << endl << endl;
 }
 
+/// \brief Checks if the input genre is valid.
+/// \param genre std::string - Input genre.
+/// \return bool - TRUE if the input genre is valid.
+/// \return bool - FALSE if the input genre is not valid.
 bool StaffOperations::isGenre(std::string genre) {
     for (int i = 0; i < NUMBER_OF_GENRES; i++) {
         if (lowerCase(genre) == genres[i]) {
@@ -347,6 +374,10 @@ bool StaffOperations::isGenre(std::string genre) {
     return false;
 }
 
+/// \brief Checks if the input classification is valid.
+/// \param classification std::string - Input classification.
+/// \return bool - TRUE if the input classification is valid.
+/// \return bool - FALSE if the input classification is not valid.
 bool StaffOperations::isClassification(std::string classification) {
     for (int i = 0; i < NUMBER_OF_CLASSIFICATIONS; i++) {
         if (upperCase(classification) == classifications[i]) {
@@ -356,16 +387,25 @@ bool StaffOperations::isClassification(std::string classification) {
     return false;
 }
 
+/// \brief Helper method to convert a string to uppercase.
+/// \param str std::string - A string.
+/// \return std::string - String with all uppercase characters.
 std::string StaffOperations::upperCase(std::string str) {
     transform(str.begin(), str.end(), str.begin(), ::toupper);
     return str;
 }
 
+/// \brief Helper method to convert a string to lowercase.
+/// \param str std::string - A string.
+/// \return std::string - String with all lowercase characters.
 std::string StaffOperations::lowerCase(std::string str) {
     transform(str.begin(), str.end(), str.begin(), ::tolower);
     return str;
 }
 
+/// \brief Helper method to format a string for printing.
+/// \param str std::string - A string.
+/// \return std::string - formatted string.
 std::string StaffOperations::formatString(std::string str) {
     str[0] = toupper(str[0]);
     for (int i = 1; i < str.length(); i++) {
@@ -376,6 +416,7 @@ std::string StaffOperations::formatString(std::string str) {
     return str;
 }
 
+/// \brief Displays an error message for any invalid input.
 void StaffOperations::displayErrorMessage() {
     cout << "\n\t\tERROR: Invalid Input" << endl;
 }

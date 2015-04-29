@@ -1,3 +1,6 @@
+/// \file main.cpp
+/// \brief Main menu for the video store management information system.
+
 #include <iostream>
 #include <stdlib.h>
 #include <string>
@@ -206,6 +209,7 @@ int main() {
     return 0;
 }
 
+/// \brief Displays program name.
 void displayProgramName() {
     cout << "\n\n\n\t      ___________________________________________________" << endl << endl;
     cout << "\t\t   VIDEO STORE MANAGEMENT INFORMATION SYSTEM" << endl;
@@ -215,6 +219,7 @@ void displayProgramName() {
     displayContinueMessage();
 }
 
+/// \brief Displays Login menu.
 void displayLoginMenu(){
     cout << "\n\n\n\n\n\n";
     cout << "\t\t\t\tLOGIN SCREEN" << endl;
@@ -224,6 +229,8 @@ void displayLoginMenu(){
     cout << "\t\t        Press 0 to Exit the Program" << endl << endl;
 }
 
+/// \brief Prompts the user a login menu selection.
+/// \return int - a menu selected by user.
 int getLoginOption() {
     int loginOption;
      do {
@@ -246,6 +253,8 @@ int getLoginOption() {
     return loginOption;
 }
 
+/// \brief Displays login screen.
+/// \param loginOption int - Login option.
 void displayLoginScreen(int loginOption) {
     if (loginOption == 1) {
         cout << "\n\n\n\n\n\n\t\t\t     STAFF LOGIN SCREEN" << endl;
@@ -256,6 +265,10 @@ void displayLoginScreen(int loginOption) {
     }
 }
 
+/// \brief Authentication process for staff.
+/// \param loginOption int - Login option.
+/// \return bool - TRUE if successfully authenticated.
+/// \return bool - FALSE if not successfully authenticated.
 bool staffLogin(int loginOption) {
     displayLoginScreen(loginOption);
     string username = getUsername();
@@ -266,6 +279,12 @@ bool staffLogin(int loginOption) {
     return false;
 }
 
+/// \brief Authentication process for customers.
+/// \param customers CustomerCollection& - Reference to a customer collection.
+/// \param customerIndex int& - Reference to a customer's index in the customer collection.
+/// \param loginOption int - Login option.
+/// \return bool - TRUE if successfully authenticated.
+/// \return bool - FALSE if not successfully authenticated.
 bool customerLogin(CustomerCollection& customers,
                    int& customerIndex, int loginOption) {
     displayLoginScreen(loginOption);
@@ -282,6 +301,8 @@ bool customerLogin(CustomerCollection& customers,
     return false;
 }
 
+/// \brief Prompts the user a username.
+/// \return string - Username prompted by user.
 string getUsername() {
     string username;
     do {
@@ -294,6 +315,8 @@ string getUsername() {
     return username;
 }
 
+/// \brief Prompts the user a password.
+/// \return string - Password prompted by user.
 string getStaffPassword() {
     string password;
     cout << "\t\t\t     Password: ";
@@ -301,6 +324,8 @@ string getStaffPassword() {
     return password;
 }
 
+/// \brief Prompts the user a password.
+/// \return string - Password prompted by user.
 string getCustomerPassword() {
     string password;
     bool allDigits;
@@ -321,6 +346,7 @@ string getCustomerPassword() {
     return password;
 }
 
+/// \brief Displays staff menu.
 void displayStaffMenu() {
     cout << "\n\n\t\t\t     STAFF MENU" << endl;
     cout << "\t     ___________________________________________________" << endl << endl;
@@ -335,6 +361,7 @@ void displayStaffMenu() {
     cout << "\t\t       Press 0 to logout" << endl << endl;
 }
 
+/// \brief Displays customer menu.
 void displayCustomerMenu() {
     cout << "\n\n\t\t\t     CUSTOMER MENU" << endl;
     cout << "\t     ___________________________________________________" << endl << endl;
@@ -347,6 +374,8 @@ void displayCustomerMenu() {
     cout << "\t\t       Press 0 to Logout" << endl << endl;
 }
 
+/// \brief Prompts the user a staff options selection.
+/// \return int - a menu selected by user.
 int getStaffOption() {
     int staffOption;
     do {
@@ -369,6 +398,8 @@ int getStaffOption() {
     return staffOption;
 }
 
+/// \brief Prompts the user a customer options selection.
+/// \return int - a menu selected by user.
 int getCustomerOption() {
     int customerOption;
     do {
@@ -391,6 +422,8 @@ int getCustomerOption() {
     return customerOption;
 }
 
+/// \brief Prompts the user a logout confirmation.
+/// \return int - Confirmation from user.
 int confirmLogout() {
     int confirm;
     cout << "\n\n\t\t\tWould you like to log out?" << endl << endl;
@@ -414,12 +447,14 @@ int confirmLogout() {
     return confirm;
 }
 
+/// \brief Displays a message and wait for an input (ENTER key) from user.
 void displayContinueMessage() {
     cout << endl << "\t\tPress ENTER to continue..." << endl << endl;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     system("CLS");
 }
 
+/// \brief Displays an error for any invalid input.
 void displayErrorMessage() {
     cout << "\t\t\tERROR: Invalid Input" << endl;
 }

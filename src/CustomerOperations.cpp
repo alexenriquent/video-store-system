@@ -1,15 +1,22 @@
+/// \file CustomerOperations.cpp
+/// \brief Implementation for Sub-menu for the customer operations.
+
 #include "CustomerOperations.h"
 
 using namespace std;
 
+/// \brief Initialises this CustomerOperation object.
 CustomerOperations::CustomerOperations() {
 
 }
 
+/// \brief Destroys this CustomerOperation object.
 CustomerOperations::~CustomerOperations() {
 
 }
 
+/// \brief Displays all the movies available in the movie collection.
+/// \param movies MovieCollection& - Reference of the movie collection.
 void CustomerOperations::browseAllMovies(MovieCollection& movies) {
     std::vector<Movie> movieList;
     movies.allMovies(movieList);
@@ -24,6 +31,8 @@ void CustomerOperations::browseAllMovies(MovieCollection& movies) {
     }
 }
 
+/// \brief Displays movie information given a movie's title.
+/// \param movies MovieCollection& - Reference of the movie collection.
 void CustomerOperations::displayMovieInfo(MovieCollection& movies) {
     std::string title;
     cout << "\n\n\t\tMOVIE INFORMATION" << endl << endl;
@@ -43,6 +52,9 @@ void CustomerOperations::displayMovieInfo(MovieCollection& movies) {
     }
 }
 
+/// \brief Rents a DVD specified by a movie's title.
+/// \param movies MovieCollection& - Reference of the movie collection.
+/// \param customers CustomerCollection& - Reference of the customer collection.
 void CustomerOperations::rentDVD(MovieCollection& movies, Customer* customer) {
     std::string title;
     cout << "\n\n\t\tRENT DVD" << endl << endl;
@@ -78,6 +90,9 @@ void CustomerOperations::rentDVD(MovieCollection& movies, Customer* customer) {
     }
 }
 
+/// \brief Returns a DVD specified by a movie's title.
+/// \param movies MovieCollection& - Reference of the movie collection.
+/// \param customers CustomerCollection& - Reference of the customer collection.
 void CustomerOperations::returnDVD(MovieCollection& movies, Customer* customer) {
     std::string title;
     cout << "\n\n\t\tRETURN DVD" << endl << endl;
@@ -104,11 +119,15 @@ void CustomerOperations::returnDVD(MovieCollection& movies, Customer* customer) 
     }
 }
 
+/// \brief Displays a list of currently rented movies.
+/// \param customers CustomerCollection& - Reference of the customer collection.
 void CustomerOperations::listCurrentlyRentedMovies(Customer* customer) {
     cout << "\n\n\t\tCURRENTLY RENTED MOVIES" << endl;
     customer->displayRecord();
 }
 
+/// \brief Displays a list of top ten movies identified by a number of rentals of each movie.
+/// \param movies MovieCollection& - Reference of the movie collection.
 void CustomerOperations::displayTopTenMovies(MovieCollection& movies) {
     std::vector<Movie> movieList;
     std::vector<Movie> topTenMovies;
@@ -126,6 +145,8 @@ void CustomerOperations::displayTopTenMovies(MovieCollection& movies) {
     cout << endl;
 }
 
+/// \brief Sorts a list of all movies alphabetically.
+/// \param movieList std::vector<Movie>& - Reference of a list of movies.
 void CustomerOperations::sortMovieList(std::vector<Movie>& movieList) {
     if (movieList.size() > 1) {
         for (std::vector<std::string>::size_type i = 0; i < movieList.size(); i++) {
@@ -140,6 +161,8 @@ void CustomerOperations::sortMovieList(std::vector<Movie>& movieList) {
     }
 }
 
+/// \brief Sorts a list of all movies by a number of rentals.
+/// \param movieList std::vector<Movie>& - Reference of a list of movies.
 void CustomerOperations::sortMovieListByNumRentals(std::vector<Movie>& movieList) {
     if (movieList.size() > 1) {
         for (std::vector<std::string>::size_type i = 0; i < movieList.size(); i++) {
@@ -154,6 +177,9 @@ void CustomerOperations::sortMovieListByNumRentals(std::vector<Movie>& movieList
     }
 }
 
+/// \brief Adds top ten movies to the topTenMovie list.
+/// \param movieList std::vector<Movie>& - List of all movies.
+/// \param topTenMovie std::vector<Movie>& - List of movies.
 void CustomerOperations::addTopTenMovies(std::vector<Movie> movieList, std::vector<Movie>& topTenMovies) {
     if (movieList.size() < 10) {
         for (std::vector<std::string>::size_type i = 0; i < movieList.size(); i++) {
@@ -166,6 +192,9 @@ void CustomerOperations::addTopTenMovies(std::vector<Movie> movieList, std::vect
     }
 }
 
+/// \brief Confirms DVD rental information.
+/// \param movieAddress Movie* - Memory address of a movie.
+/// \return int - Customer's confirmation.
 int CustomerOperations::confirmRenting(Movie* movieAddress) {
     int confirm;
     cout << "\n\t\tWould you like to rent the following movie?" << endl;
@@ -190,6 +219,9 @@ int CustomerOperations::confirmRenting(Movie* movieAddress) {
     return confirm;
 }
 
+/// \brief Confirms DVD returning information.
+/// \param movieAddress Movie* - Memory address of a movie.
+/// \return int - Customer's confirmation.
 int CustomerOperations::confirmReturning(Movie* movieAddress) {
     int confirm;
     cout << "\n\t\tWould you like to return the following movie?" << endl;
@@ -214,11 +246,17 @@ int CustomerOperations::confirmReturning(Movie* movieAddress) {
     return confirm;
 }
 
+/// \brief Helper method to convert a string to lowercase.
+/// \param str std::string - A string.
+/// \return std::string - String with all lowercase characters.
 std::string CustomerOperations::lowerCase(std::string str) {
     transform(str.begin(), str.end(), str.begin(), ::tolower);
     return str;
 }
 
+/// \brief Helper method to format a string for printing.
+/// \param str std::string - A string.
+/// \return std::string - formatted string.
 std::string CustomerOperations::formatString(std::string str) {
     str[0] = toupper(str[0]);
     for (int i = 1; i < str.length(); i++) {
@@ -229,10 +267,12 @@ std::string CustomerOperations::formatString(std::string str) {
     return str;
 }
 
+/// \brief Displays an error message for any invalid input.
 void CustomerOperations::displayErrorMessage() {
     cout << "\n\t\tERROR: Invalid Input" << endl;
 }
 
+/// \brief Displays an error message when the movie collection does not contain the specified movie.
 void CustomerOperations::displayMovieNotFoundMessage() {
     cout << "\n\t\tMovie not found" << endl << endl;
 }
