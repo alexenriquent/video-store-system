@@ -1,24 +1,36 @@
+/// \file MovieCollection.cpp
+/// \brief Implementation for MovieCollection ADT to represent a collection of movie
+
 #include "MovieCollection.h"
 
 using namespace std;
 
+/// \brief Initialises this MovieCollection.
 MovieCollection::MovieCollection() {
     root = NULL;
     numMovies = 0;
 }
 
+/// \brief Destroys this MovieCollection.
 MovieCollection::~MovieCollection() {
 
 }
 
+/// \brief Checks if the collection does not contain any movie.
+/// \return bool - TRUE if the collection is empty.
+/// \return bool - FALSE if the collection is not empty.
 bool MovieCollection::empty() const {
     return root == NULL;
 }
 
+/// \brief Returns a number of movies stored in the collection.
+/// \return int - Number of movies stored in the collection.
 int MovieCollection::size() const {
     return numMovies;
 }
 
+/// \brief Inserts the specified Movie object into the collection.
+/// \param item Movie - Movie object to be inserted.
 void MovieCollection::insert(const Movie item) {
     if (root == NULL) {
         root = new MovieContainer(item);
@@ -28,6 +40,9 @@ void MovieCollection::insert(const Movie item) {
     }
 }
 
+/// \brief Recursive function that inserts the specified Movie object into the collection.
+/// \param root MovieContainer* - Pointer to the root of the collection (tree).
+/// \param item Movie - Movie object to be inserted.
 void MovieCollection::insert(MovieContainer* root, Movie item) {
     if (item.getTitle().compare(root->getItem().getTitle()) < 0) {
         if (root->getLChild() == NULL) {
@@ -46,6 +61,8 @@ void MovieCollection::insert(MovieContainer* root, Movie item) {
     }
 }
 
+/// \brief Recursive function that erases the specified Movie object from the collection.
+/// \param title std::string - Movie's title.
 void MovieCollection::erase(const std::string title) {
     MovieContainer* current = root;
     MovieContainer* parent = NULL;
@@ -103,10 +120,18 @@ void MovieCollection::erase(const std::string title) {
     }
 }
 
+/// \brief Searches for the specified Movie object in the collection.
+/// \param title std::string - Movie's title.
+/// \return bool - TRUE if the specified movie in found.
+/// \return bool - FALSE if the specified movie is not found.
 bool MovieCollection::search(std::string title) const {
     return search(root, title);
 }
 
+/// \brief Recursive function that searches for the specified Movie object in the collection.
+/// \param title std::string - Movie's title.
+/// \return bool - TRUE if the specified movie in found.
+/// \return bool - FALSE if the specified movie is not found.
 bool MovieCollection::search(MovieContainer* root, std::string title) const {
     if (root != NULL) {
         if (title.compare(root->getItem().getTitle()) == 0) {
@@ -121,10 +146,13 @@ bool MovieCollection::search(MovieContainer* root, std::string title) const {
     }
 }
 
+/// \brief Traverses and print each movie's title and a number of available DVDs in pre-order.
 void MovieCollection::preOrderTraversal() {
     preOrderTraversal(root);
 }
 
+/// \brief Recursive function that traverses and print each movie's title and a number of available DVDs in pre-order.
+/// \param root MovieContainer* - Pointer to the root of the collection (tree).
 void MovieCollection::preOrderTraversal(MovieContainer* root) {
     if (root != NULL) {
         cout << "\t\t" << setw(15) << left << formatString(root->getItem().getTitle()) << setw(20) << right
@@ -134,10 +162,13 @@ void MovieCollection::preOrderTraversal(MovieContainer* root) {
     }
 }
 
+/// \brief Traverses and print each movie's title and a number of available DVDs in in-order.
 void MovieCollection::inOrderTraversal() {
     inOrderTraversal(root);
 }
 
+/// \brief Traverses and print each movie's title and a number of available DVDs in in-order.
+/// \param root MovieContainer* - Pointer to the root of the collection (tree).
 void MovieCollection::inOrderTraversal(MovieContainer* root) {
     if (root != NULL) {
         preOrderTraversal(root->getLChild());
@@ -147,10 +178,13 @@ void MovieCollection::inOrderTraversal(MovieContainer* root) {
     }
 }
 
+/// \brief Traverses and print each movie's title and a number of available DVDs in post-order.
 void MovieCollection::postOrderTraversal() {
     postOrderTraversal(root);
 }
 
+/// \brief Traverses and print each movie's title and a number of available DVDs in post-order.
+/// \param root MovieContainer* - Pointer to the root of the collection (tree).
 void MovieCollection::postOrderTraversal(MovieContainer* root) {
     if (root != NULL) {
         preOrderTraversal(root->getLChild());
@@ -160,12 +194,14 @@ void MovieCollection::postOrderTraversal(MovieContainer* root) {
     }
 }
 
+/// \brief Removes all the movies from the collection.
 void MovieCollection::clear() {
     clear(root);
     root = NULL;
     numMovies = 0;
 }
 
+/// \brief Recursive function that removes all the movies from the collection.
 void MovieCollection::clear(const MovieContainer* root) {
     if (root != NULL) {
         clear(root->getLChild());
@@ -174,10 +210,17 @@ void MovieCollection::clear(const MovieContainer* root) {
     }
 }
 
+/// \brief Gets a pointer to the the address of the specified Movie object.
+/// \param title std::string - Movie's title.
+/// \return Movie* - Pointer to the address of the specified Movie object.
 Movie* MovieCollection::getItemAddress(const std::string title) {
     return getItemAddress(root, title);
 }
 
+/// \brief Recursive function that gets a pointer to the the address of the specified Movie object.
+/// \param root MovieContainer* - Pointer to the root of the collection (tree).
+/// \param title std::string - Movie's title.
+/// \return Movie* - Pointer to the address of the specified Movie object.
 Movie* MovieCollection::getItemAddress(MovieContainer* root, const std::string title) {
     if (root != NULL) {
         if (title.compare(root->getItem().getTitle()) == 0) {
@@ -192,10 +235,15 @@ Movie* MovieCollection::getItemAddress(MovieContainer* root, const std::string t
     }
 }
 
+/// \brief Stores all the movies in a vector.
+/// \param movies std::vector<Movie>& - Vector of type Movie.
 void MovieCollection::allMovies(std::vector<Movie>& movies) const {
     allMovies(root, movies);
 }
 
+/// \brief Recursive function that stores all the movies in a vector.
+/// \param root MovieContainer* - Pointer to the root of the collection (tree).
+/// \param movies std::vector<Movie>& - Vector of type Movie.
 void MovieCollection::allMovies(MovieContainer* root, std::vector<Movie>& movies) const {
     if (root == NULL) {
         return;
@@ -209,6 +257,11 @@ void MovieCollection::allMovies(MovieContainer* root, std::vector<Movie>& movies
     }
 }
 
+/// \brief Helper method to compares two strings regardless the case.
+/// \param str1 std::string - Compared string.
+/// \param str2 std::string - Comparing string.
+/// \return bool - TRUE if the string comparison result is equal.
+/// \return bool - FALSE if the string comparison result is not equal.
 std::string MovieCollection::formatString(std::string str) {
     str[0] = toupper(str[0]);
     for (int i = 1; i < str.length(); i++) {
