@@ -175,3 +175,90 @@
 1430302442 source:c:\users\alex\desktop\repository\videostoresystem\src\staffoperations.cpp
 	"StaffOperations.h"
 
+1430369502 source:c:\c++\video-store-system\main.cpp
+	<iostream>
+	<stdlib.h>
+	<string>
+	<iomanip>
+	<conio.h>
+	<limits>
+	<cctype>
+	"MovieCollection.h"
+	"CustomerCollection.h"
+	"StaffOperations.h"
+	"CustomerOperations.h"
+
+1430369502 c:\c++\video-store-system\include\moviecollection.h
+	<iostream>
+	<iomanip>
+	<cstddef>
+	<string>
+	<vector>
+	<sstream>
+	<algorithm>
+	"MovieContainer.h"
+
+1430369502 c:\c++\video-store-system\include\moviecontainer.h
+	<string>
+	<cstddef>
+	"Movie.h"
+
+1430369502 c:\c++\video-store-system\include\movie.h
+	<iostream>
+	<cctype>
+	<algorithm>
+	<vector>
+	<string>
+
+1430369502 c:\c++\video-store-system\include\customercollection.h
+	<string>
+	<vector>
+	"Customer.h"
+
+1430369502 c:\c++\video-store-system\include\customer.h
+	<vector>
+	<sstream>
+	<iterator>
+	<string>
+	<cctype>
+	<algorithm>
+	"Movie.h"
+
+1430369502 c:\c++\video-store-system\include\staffoperations.h
+	<iostream>
+	<iomanip>
+	<string>
+	<vector>
+	<limits>
+	"MovieCollection.h"
+	"CustomerCollection.h"
+
+1430369502 c:\c++\video-store-system\include\customeroperations.h
+	<iostream>
+	<string>
+	<algorithm>
+	<limits>
+	<MovieCollection.h>
+	<Customer.h>
+
+1430369502 source:c:\c++\video-store-system\src\customer.cpp
+	"Customer.h"
+
+1430369502 source:c:\c++\video-store-system\src\customercollection.cpp
+	"CustomerCollection.h"
+
+1430369502 source:c:\c++\video-store-system\src\customeroperations.cpp
+	"CustomerOperations.h"
+
+1430369502 source:c:\c++\video-store-system\src\movie.cpp
+	"Movie.h"
+
+1430369502 source:c:\c++\video-store-system\src\moviecollection.cpp
+	"MovieCollection.h"
+
+1430369502 source:c:\c++\video-store-system\src\moviecontainer.cpp
+	"MovieContainer.h"
+
+1430373010 source:c:\c++\video-store-system\src\staffoperations.cpp
+	"StaffOperations.h"
+
