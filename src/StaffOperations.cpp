@@ -240,6 +240,7 @@ void StaffOperations::registerCustomer(CustomerCollection& customers) {
         }
         if (phoneNumber.length() != 10 || allDigitsPhoneNumber == false)  {
             displayErrorMessage();
+            cout<<"\t\tPlease Enter [10 Digits] Phone Number"<<endl;
         }
     } while (phoneNumber.length() != 10 || allDigitsPhoneNumber == false);
 
