@@ -1,7 +1,7 @@
 /// \file MovieContainer.h
 /// \brief Specification for MovieContainer ADT used as a container (node) in MovieCollection ADT.
 /// \author Thanat Chokwijitkul n9234900
-/// \author Xui Koh
+/// \author Month Yean Koh n9070095
 /// \date April, 2015
 
 #ifndef MOVIECONTAINER_H

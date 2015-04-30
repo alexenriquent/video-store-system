@@ -1,7 +1,7 @@
 /// \file MovieCollection.cpp
 /// \brief Implementation for MovieCollection ADT to represent a collection of movie.
 /// \author Thanat Chokwijitkul n9234900
-/// \author Xui Koh
+/// \author Month Yean Koh n9070095
 /// \date April, 2015
 
 #include "MovieCollection.h"

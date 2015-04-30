@@ -1,7 +1,7 @@
 /// \file CustomerCollection.cpp
 /// \brief Implementation for CustomerCollection ADT to represent a collection of customers.
 /// \author Thanat Chokwijitkul n9234900
-/// \author Xui Koh
+/// \author Month Yean Koh n9070095
 /// \date April, 2015
 
 #include "CustomerCollection.h"

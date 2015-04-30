@@ -1,7 +1,7 @@
 /// \file Customer.h
 /// \brief Specification for Customer ADT to model a customer.
 /// \author Thanat Chokwijitkul n9234900
-/// \author Xui Koh
+/// \author Month Yean Koh n9070095
 /// \date April, 2015
 
 #ifndef CUSTOMER_H

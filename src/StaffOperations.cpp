@@ -1,7 +1,7 @@
 /// \file StaffOperations.cpp
 /// \brief Implementation for Sub-menu for the staff operations.
 /// \author Thanat Chokwijitkul n9234900
-/// \author Xui Koh
+/// \author Month Yean Koh n9070095
 /// \date April, 2015
 
 #include "StaffOperations.h"
@@ -419,7 +419,7 @@ std::string StaffOperations::formatString(std::string str) {
     return str;
 }
 
-/// \brief Displays the error message for any invalid input.
+/// \brief Displays an error message for any invalid input.
 void StaffOperations::displayErrorMessage() {
     cout << "\n\t\tERROR: Invalid Input" << endl;
 }

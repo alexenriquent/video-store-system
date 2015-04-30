@@ -1,7 +1,7 @@
 /// \file StaffOperations.h
 /// \brief Specification for Sub-menu for the staff operations.
 /// \author Thanat Chokwijitkul n9234900
-/// \author Xui Koh
+/// \author Month Yean Koh n9070095
 /// \date April, 2015
 
 #ifndef STAFFOPERATIONS_H
@@ -42,7 +42,7 @@ class StaffOperations {
         /// Formats the specified string for printing.
         std::string formatString(std::string str);
 
-        /// Display the error message for any invalid input.
+        /// Display an error message for any invalid input.
         void displayErrorMessage();
 
     public:

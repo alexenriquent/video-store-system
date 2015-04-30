@@ -1,7 +1,7 @@
 /// \file main.cpp
 /// \brief Main menu for the video store management information system.
 /// \author Thanat Chokwijitkul n9234900
-/// \author Xui Koh
+/// \author Month Yean Koh n9070095
 /// \date April, 2015
 
 #include <iostream>
@@ -457,7 +457,7 @@ void displayContinueMessage() {
     system("CLS");
 }
 
-/// \brief Displays the error for any invalid input.
+/// \brief Displays an error for any invalid input.
 void displayErrorMessage() {
     cout << "\t\t\tERROR: Invalid Input" << endl;
 }

@@ -1,7 +1,7 @@
 /// \file CustomerOperations.cpp
 /// \brief Implementation for Sub-menu for the customer operations.
 /// \author Thanat Chokwijitkul n9234900
-/// \author Xui Koh
+/// \author Month Yean Koh n9070095
 /// \date April, 2015
 
 #include "CustomerOperations.h"
@@ -270,7 +270,7 @@ std::string CustomerOperations::formatString(std::string str) {
     return str;
 }
 
-/// \brief Displays the error message for any invalid input.
+/// \brief Displays an error message for any invalid input.
 void CustomerOperations::displayErrorMessage() {
     cout << "\n\t\tERROR: Invalid Input" << endl;
 }
