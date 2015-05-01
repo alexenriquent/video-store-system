@@ -75,9 +75,10 @@ void StaffOperations::addDVDsOfNewMovie(MovieCollection& movies) {
 
     cout << "\t\tRelease Date:   ";
     getline(cin, releaseDate);
-    do{
-    cout << "\t\tDuration:       ";
-    cin >> duration;
+
+    do {
+        cout << "\t\tDuration:       ";
+        cin >> duration;
         while (!cin) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -87,17 +88,15 @@ void StaffOperations::addDVDsOfNewMovie(MovieCollection& movies) {
             cin >> duration;
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
-
-        if(duration<=0)
-            {
+        if(duration <= 0) {
             displayErrorMessage();
-            cout << "\t\tDuration of Movie's Have to More Then 0" << endl << endl;
-            }
-    }while(duration<=0);
+            cout << "\t\tDuration of the movie must be greater than 0" << endl << endl;
+        }
+    } while (duration <= 0);
 
-    do{
-    cout << "\t\tNumber of DVDs: ";
-    cin >> numDVDs;
+    do {
+        cout << "\t\tNumber of DVDs: ";
+        cin >> numDVDs;
         while (!cin) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -107,12 +106,11 @@ void StaffOperations::addDVDsOfNewMovie(MovieCollection& movies) {
             cin >> numDVDs;
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
-        if(numDVDs<=0)
-        {
+        if(numDVDs <= 0) {
             displayErrorMessage();
-            cout << "\t\tNumbers of DVDs Have to More Then 0" << endl << endl;
+            cout << "\t\tA number of DVDs must be greater than 0" << endl << endl;
         }
-    }while(numDVDs<=0);
+    } while (numDVDs <= 0);
 
     if (!duplicate) {
         Movie newMovie(title, starring, director, genre, classification,
@@ -271,7 +269,7 @@ void StaffOperations::registerCustomer(CustomerCollection& customers) {
         }
         if (phoneNumber.length() != 10 || allDigitsPhoneNumber == false)  {
             displayErrorMessage();
-            cout<<"\t\tPlease Enter [10 Digits] Phone Number"<<endl;
+            cout << "\t\tPlease enter [10 Digits] phone number" << endl;
         }
     } while (phoneNumber.length() != 10 || allDigitsPhoneNumber == false);
 
