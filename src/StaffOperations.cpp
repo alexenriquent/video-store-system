@@ -141,7 +141,15 @@ void StaffOperations::addDVDsOfExistingMovie(MovieCollection& movies) {
 
     cout << "\t\tEnter number of DVDs: ";
     cin >> numDVDs;
-    cout << endl;
+        while (!cin) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            displayErrorMessage();
+            cout << "\t\tPlease enter only integer" << endl << endl;
+            cout << "\t\tEnter number of DVDs: ";
+            cin >> numDVDs;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
 
     if (exist) {
         Movie* movieAddress = movies.getItemAddress(title);
@@ -174,7 +182,15 @@ void StaffOperations::removeDVDs(MovieCollection& movies) {
 
     cout << "\t\tEnter number of DVDs: ";
     cin >> numDVDs;
-    cout << endl;
+        while (!cin) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            displayErrorMessage();
+            cout << "\t\tPlease enter only integer" << endl << endl;
+            cout << "\t\tEnter number of DVDs: ";
+            cin >> numDVDs;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
 
     if (exist) {
         Movie* movieAddress = movies.getItemAddress(title);
