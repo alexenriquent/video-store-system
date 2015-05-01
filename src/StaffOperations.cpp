@@ -75,29 +75,42 @@ void StaffOperations::addDVDsOfNewMovie(MovieCollection& movies) {
 
     cout << "\t\tRelease Date:   ";
     getline(cin, releaseDate);
-    cout << "\t\tDuration:       ";
-    cin >> duration;
-    while (!cin) {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        displayErrorMessage();
-        cout << "\t\tPlease enter only integer" << endl << endl;
-        cout << "\t\tDuration: ";
-        cin >> duration;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    }
 
-    cout << "\t\tNumber of DVDs: ";
-    cin >> numDVDs;
-    while (!cin) {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        displayErrorMessage();
-        cout << "\t\tPlease enter only integer" << endl << endl;
+    do {
+        cout << "\t\tDuration:       ";
+        cin >> duration;
+        while (!cin) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            displayErrorMessage();
+            cout << "\t\tPlease enter only integer" << endl << endl;
+            cout << "\t\tDuration:       ";
+            cin >> duration;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        if(duration <= 0) {
+            displayErrorMessage();
+            cout << "\t\tDuration of the movie must be greater than 0" << endl << endl;
+        }
+    } while (duration <= 0);
+
+    do {
         cout << "\t\tNumber of DVDs: ";
         cin >> numDVDs;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    }
+        while (!cin) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            displayErrorMessage();
+            cout << "\t\tPlease enter only integer" << endl << endl;
+            cout << "\t\tNumber of DVDs: ";
+            cin >> numDVDs;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        if(numDVDs <= 0) {
+            displayErrorMessage();
+            cout << "\t\tA number of DVDs must be greater than 0" << endl << endl;
+        }
+    } while (numDVDs <= 0);
 
     if (!duplicate) {
         Movie newMovie(title, starring, director, genre, classification,
@@ -240,6 +253,7 @@ void StaffOperations::registerCustomer(CustomerCollection& customers) {
         }
         if (phoneNumber.length() != 10 || allDigitsPhoneNumber == false)  {
             displayErrorMessage();
+            cout << "\t\tPlease enter [10 Digits] phone number" << endl;
         }
     } while (phoneNumber.length() != 10 || allDigitsPhoneNumber == false);
 
@@ -353,15 +367,15 @@ void StaffOperations::findRentalRecord(MovieCollection& movies) {
 
 /// \brief Display all the available genres the system can use to categorise a movie.
 void StaffOperations::displayGenres() {
-    cout << "\n\t\tGenres may be Drama, Adventure, Family, Action," << endl;
-    cout << "\t\tSci-Fi, Comedy, Animated, Thriller or Other" << endl << endl;
+    cout << "\n\t\tGenres may be [Drama, Adventure, Family, Action," << endl;
+    cout << "\t\tSci-Fi, Comedy, Animated, Thriller or Other]" << endl << endl;
 }
 
 /// \brief Display all the available classification the system can use to classify a movie.
 void StaffOperations::displayClassifications() {
     cout << "\n\t\tGenres may be General (G), Parental Guidance (PG)," << endl;
     cout << "\t\tMature (M15+) or Mature Accompanied (MA15+)" << endl << endl;
-    cout << "\t\tEnter only its abbreviation i.e. G, PG, M15+ or MA15+" << endl << endl;
+    cout << "\t\tEnter only its abbreviation i.e. [G, PG, M15+ or MA15+]" << endl << endl;
 }
 
 /// \brief Checks if the input genre is valid.
