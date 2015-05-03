@@ -37,12 +37,8 @@ void CustomerOperations::browseAllMovies(MovieCollection& movies) {
 /// \brief Displays movie information given a movie's title.
 /// \param movies MovieCollection& - Reference of the movie collection.
 void CustomerOperations::displayMovieInfo(MovieCollection& movies) {
-    std::string title;
     cout << "\n\n\t\tMOVIE INFORMATION" << endl << endl;
-    cout << "\t\tEnter Movie's title:  ";
-    getline(cin, title);
-    title = lowerCase(title);
-
+    std::string title = promptTitle();
     bool exist = movies.search(title);
     if (!exist) {
         displayMovieNotFoundMessage();
@@ -59,12 +55,8 @@ void CustomerOperations::displayMovieInfo(MovieCollection& movies) {
 /// \param movies MovieCollection& - Reference of the movie collection.
 /// \param customer Customer* - Pointer to a customer.
 void CustomerOperations::rentDVD(MovieCollection& movies, Customer* customer) {
-    std::string title;
     cout << "\n\n\t\tRENT DVD" << endl << endl;
-    cout << "\t\tEnter Movie's title:  ";
-    getline(cin, title);
-    title = lowerCase(title);
-
+    std::string title = promptTitle();
     bool exist = movies.search(title);
     if (!exist) {
         displayMovieNotFoundMessage();
@@ -97,11 +89,8 @@ void CustomerOperations::rentDVD(MovieCollection& movies, Customer* customer) {
 /// \param movies MovieCollection& - Reference of the movie collection.
 /// \param customer Customer* - Pointer to a customer.
 void CustomerOperations::returnDVD(MovieCollection& movies, Customer* customer) {
-    std::string title;
     cout << "\n\n\t\tRETURN DVD" << endl << endl;
-    cout << "\t\tEnter Movie's title:  ";
-    getline(cin, title);
-
+    std::string title = promptTitle();
     bool exist = customer->findRecord(title) >= 0;
     if (!exist) {
         displayMovieNotFoundMessage();
@@ -146,6 +135,16 @@ void CustomerOperations::displayTopTenMovies(MovieCollection& movies) {
              << topTenMovies[i].getNumRentals() << endl;
     }
     cout << endl;
+}
+
+/// \brief Prompts the user a movie's title.
+/// \return string - Title prompted by user.
+std::string CustomerOperations::promptTitle() {
+    std::string title;
+    cout << "\t\tEnter Movie's title:  ";
+    getline(cin, title);
+    title = lowerCase(title);
+    return title;
 }
 
 /// \brief Sorts a list of all movies alphabetically.

@@ -17,6 +17,9 @@
 class CustomerOperations {
 
      private:
+        /// Gets a movie's title from user.
+        std::string promptTitle();
+
         /// Sorts a list of movies by name.
         void sortMovieList(std::vector<Movie>& movieList);
 
