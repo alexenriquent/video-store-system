@@ -21,10 +21,46 @@
 class StaffOperations {
 
     private:
-        /// Display a list of genres.
+        /// Gets a movie's title from user.
+        std::string promptTitle();
+
+        /// Gets name(s) of people who starred in the movie.
+        std::string promptStarring();
+
+        /// Gets the movie's director from user.
+        std::string promptDirector();
+
+        /// Gets the movie's genre from user.
+        std::string promptGenre();
+
+        /// Gets the movie's classification from user.
+        std::string promptClassification();
+
+        /// Gets the movie's release date from user.
+        std::string promptReleaseDate();
+
+        /// Gets the movie's duration from user.
+        int promptDuration();
+
+        /// Gets a number of DVDs from user.
+        int promptNumDVDs();
+
+        /// Gets a customer's name from user.
+        std::string promptName();
+
+        /// Gets the customer's address from user.
+        std::string promptAddress();
+
+        /// Gets the customer's phone number from user.
+        std::string promptPhoneNumber();
+
+        /// Gets the customer's password from user.
+        std::string promptPassword();
+
+        /// Displays a list of genres.
         void displayGenres();
 
-        /// Display  a list of classifications.
+        /// Displays a list of classifications.
         void displayClassifications();
 
         /// Checks if the input genre is on the genre list.
@@ -44,6 +80,12 @@ class StaffOperations {
 
         /// Display an error message for any invalid input.
         void displayErrorMessage();
+
+        /// Display the movie not found message.
+        void displayMovieNotFoundMessage();
+
+        /// Display the customer not found message.
+        void displayCustomerNotFoundMessage();
 
     public:
         /// Constructor of the StaffOperation class.

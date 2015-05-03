@@ -275,7 +275,7 @@ void CustomerOperations::displayErrorMessage() {
     cout << "\n\t\tERROR: Invalid Input" << endl;
 }
 
-/// \brief Displays the error message when the movie collection does not contain the specified movie.
+/// \brief Displays an error message when the movie collection does not contain the specified movie.
 void CustomerOperations::displayMovieNotFoundMessage() {
     cout << "\n\t\tMovie not found" << endl << endl;
 }
