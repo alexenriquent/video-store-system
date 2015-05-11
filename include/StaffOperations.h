@@ -118,6 +118,9 @@ class StaffOperations {
         /// Finds a movie's rental record.
         void findRentalRecord(MovieCollection& movies);
 
+        /// Display A confirmation Messages During The Process Of Every Operation
+        int displayConfirmation();
+
 };
 
 #endif // STAFFOPERATIONS_H
