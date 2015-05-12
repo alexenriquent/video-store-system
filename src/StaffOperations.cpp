@@ -45,7 +45,7 @@ void StaffOperations::addDVDsOfNewMovie(MovieCollection& movies) {
     if (!duplicate) {
         Movie newMovie(title, starring, director, genre, classification,
         releaseDate, duration, numDVDs);
-        cout << "\n\t\tWold you like to add a movie \"" << formatString(title) << "\" ?" << endl;
+        cout << "\n\t\tWould you like to add a movie \"" << formatString(title) << "\" ?" << endl;
         if (displayConfirmation() == 1){
             movies.insert(newMovie);
             cout << "\n\t\t\"" << formatString(title) << "\" has been added to the collection" << endl << endl;
@@ -175,8 +175,9 @@ void StaffOperations::registerCustomer(CustomerCollection& customers) {
         customers.addCustomer(newCustomer);
         cout << "\n\t\t\"" << formatString(name) << "\" has been registered." << endl << endl;
     }
-    else
-        cout << "\n\t\tCustomer's registration operation has rejected\n\t\tBack to main menu"<<endl;
+    else {
+        cout << "\n\t\tCustomer's registration operation has been rejected\n\t\tBack to main menu" << endl;
+    }
      cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
@@ -206,7 +207,7 @@ void StaffOperations::removeCustomer(CustomerCollection& customers) {
                 cout << "\n\t\t\"" << formatString(name) << "\" has been deleted" << endl << endl;
             }
             else {
-                cout << "\n\t\tRemove customer's operation has rejected\n\t\tBack to main menu"<< endl << endl;
+                cout << "\n\t\tRemove customer's operation has been rejected\n\t\tBack to main menu"<< endl << endl;
             }
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
