@@ -328,18 +328,18 @@ string getStaffPassword() {
     cout << "\t\t\t     Password: ";
         while(true){
             temppassword = getch();
-            if(temppassword == 13) {
+            if ( temppassword == 13) {
                 pos = 0;
                 break;
             }
-            if(temppassword == 8) { // discard * and char from buffer
+            if ( temppassword == 8) { // discard * and char from buffer
                     if(pos > 0){
-                    cout <<"\b \b"; cpassword[pos-1]='\0'; pos--; }
+                    cout <<"\b \b"; cpassword[pos-1] = '\0'; pos--; }
                     }
             else { // display * and put char to buffer
-                cout<<"*"; cpassword[pos]=temppassword; cpassword[pos+1]='\0'; pos++;
+                cout << "*"; cpassword[pos] = temppassword; cpassword[pos+1] = '\0'; pos++;
                 }
-        if(pos <= 0) pos = 0;
+        if (pos <= 0) pos = 0;
         }
         password = string(cpassword);
         return password;
@@ -357,20 +357,20 @@ string getCustomerPassword() {
         allDigits = true;
         cout << "\t\t\t     Password: ";
             while(true){
-                temppassword=getch();
-                if(temppassword == 13){
+                temppassword = getch();
+                if (temppassword == 13){
                     pos = 0;
                     break;
                     }
-                if(temppassword == 8) {
+                if (temppassword == 8) {
                         if(pos > 0){
-                        cout <<"\b \b"; cpassword[pos-1]='\0'; pos--;
+                        cout <<"\b \b"; cpassword[pos-1] = '\0'; pos--;
                         }
                     }
                 else {
-                    cout<<"*"; cpassword[pos]=temppassword; cpassword[pos+1]='\0'; pos++;
+                    cout<<"*"; cpassword[pos] = temppassword; cpassword[pos+1] = '\0'; pos++;
                     }
-            if(pos<=0) pos=0;
+            if (pos <= 0) pos = 0;
             }
             password = string (cpassword);
         for (unsigned int i = 0; i < password.length(); i++) {
