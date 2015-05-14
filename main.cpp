@@ -322,20 +322,57 @@ string getUsername() {
 /// \return string - Password prompted by user.
 string getStaffPassword() {
     string password;
+    char temppassword;
+    char cpassword[50];
+    int pos = 0;
     cout << "\t\t\t     Password: ";
-    getline(cin, password);
-    return password;
+        while(true){
+            temppassword = getch();
+            if(temppassword == 13) {
+                pos = 0;
+                break;
+            }
+            if(temppassword == 8) { // discard * and char from buffer
+                    if(pos > 0){
+                    cout <<"\b \b"; cpassword[pos-1]='\0'; pos--; }
+                    }
+            else { // display * and put char to buffer
+                cout<<"*"; cpassword[pos]=temppassword; cpassword[pos+1]='\0'; pos++;
+                }
+        if(pos <= 0) pos = 0;
+        }
+        password = string(cpassword);
+        return password;
 }
 
 /// \brief Prompts the user a password.
 /// \return string - Password prompted by user.
 string getCustomerPassword() {
     string password;
+    char temppassword;
+    char cpassword[50];
+    int pos=0;
     bool allDigits;
     do {
         allDigits = true;
         cout << "\t\t\t     Password: ";
-        getline(cin, password);
+            while(true){
+                temppassword=getch();
+                if(temppassword == 13){
+                    pos = 0;
+                    break;
+                    }
+                if(temppassword == 8) {
+                        if(pos > 0){
+                        cout <<"\b \b"; cpassword[pos-1]='\0'; pos--;
+                        }
+                    }
+                else {
+                    cout<<"*"; cpassword[pos]=temppassword; cpassword[pos+1]='\0'; pos++;
+                    }
+            if(pos<=0) pos=0;
+            }
+            password = string (cpassword);
         for (unsigned int i = 0; i < password.length(); i++) {
             if (!isdigit(password[i])) {
                 allDigits = false;
@@ -459,5 +496,5 @@ void displayContinueMessage() {
 
 /// \brief Displays an error for any invalid input.
 void displayErrorMessage() {
-    cout << "\t\t\tERROR: Invalid Input" << endl;
+    cout << "\n\t\t\tERROR: Invalid Input" << endl;
 }
