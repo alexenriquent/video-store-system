@@ -26,10 +26,12 @@ void CustomerOperations::browseAllMovies(MovieCollection& movies) {
     sortMovieList(movieList);
 
     cout << "\n\t\tALL MOVIES" << endl << endl;
-    cout << "\t\t" << setw(15) << left << "Title" << setw(20) << right << "Number of DVDs" << endl << endl;
+    cout << "\t\t" << setw(15) << left << "Title" << setw(20)
+         << right << "Number of DVDs" << endl << endl;
 
     for (std::vector<std::string>::size_type i = 0; i < movieList.size(); i++) {
-        cout << "\t\t" << setw(15) << left << formatString(movieList[i].getTitle()) << setw(20) << right
+        cout << "\t\t" << setw(15) << left
+             << formatString(movieList[i].getTitle()) << setw(20) << right
              << movieList[i].getNumDVDs() - movieList[i].getRecord().size() << endl;
     }
 }
@@ -64,7 +66,8 @@ void CustomerOperations::rentDVD(MovieCollection& movies, Customer* customer) {
     } else {
         bool duplicate = customer->findRecord(title) >= 0;
         if (duplicate) {
-            cout << "\n\t\tERROR: \"" << formatString(title) << "\" has already been rented by the customer" << endl << endl;
+            cout << "\n\t\tERROR: \"" << formatString(title)
+                 << "\" has already been rented by the customer" << endl << endl;
         } else if (!duplicate && customer->getRecord().size() < 10) {
             Movie* movieAddress = movies.getItemAddress(title);
             int confirm = confirmRenting(movieAddress);
@@ -73,7 +76,8 @@ void CustomerOperations::rentDVD(MovieCollection& movies, Customer* customer) {
                 movieAddress->addRecord(customer->getName());
                 movieAddress->increaseNumRentals();
                 customer->addRecord(title);
-                cout << "\n\t\t\"" << formatString(title) << "\" has been rented" << endl << endl;
+                cout << "\n\t\t\"" << formatString(title)
+                     << "\" has been rented" << endl << endl;
             } else if (confirm == 2) {
                 cout << "\n\t\tRequest has been canceled" << endl << endl;
             }
@@ -102,7 +106,8 @@ void CustomerOperations::returnDVD(MovieCollection& movies, Customer* customer) 
         if (confirm == 1) {
             movieAddress->removeRecord(customer->getName());
             customer->removeRecord(title);
-            cout << "\n\t\t\"" << formatString(title) << "\" has been returned" << endl << endl;
+            cout << "\n\t\t\"" << formatString(title)
+                 << "\" has been returned" << endl << endl;
         } else if (confirm == 2) {
             cout << "\n\t\tRequest has been canceled" << endl << endl;
         }
@@ -128,10 +133,12 @@ void CustomerOperations::displayTopTenMovies(MovieCollection& movies) {
     addTopTenMovies(movieList, topTenMovies);
 
     cout << "\n\n\t\tTOP 10 RENTED MOVIES" << endl << endl;
-    cout << "\t\t" << setw(15) << left << "Title" << setw(20) << right << "Number of Rentals" << endl << endl;
+    cout << "\t\t" << setw(15) << left << "Title" << setw(20)
+         << right << "Number of Rentals" << endl << endl;
 
     for (std::vector<std::string>::size_type i = 0; i < topTenMovies.size(); i++) {
-        cout << "\t\t" << setw(15) << left << formatString(topTenMovies[i].getTitle()) << setw(20) << right
+        cout << "\t\t" << setw(15) << left
+             << formatString(topTenMovies[i].getTitle()) << setw(20) << right
              << topTenMovies[i].getNumRentals() << endl;
     }
     cout << endl;

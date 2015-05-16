@@ -29,7 +29,8 @@ void StaffOperations::addDVDsOfNewMovie(MovieCollection& movies) {
     std::string title = promptTitle();
     bool duplicate = movies.search(title);
     if (duplicate) {
-        cout << "\n\t\t\"" << formatString(title) << "\" has already existed in the collection" << endl;
+        cout << "\n\t\t\"" << formatString(title)
+             << "\" has already existed in the collection" << endl;
         cout << "\n\t\tPlease add a new movie" << endl << endl;
         return;
     }
@@ -45,13 +46,16 @@ void StaffOperations::addDVDsOfNewMovie(MovieCollection& movies) {
     if (!duplicate) {
         Movie newMovie(title, starring, director, genre, classification,
         releaseDate, duration, numDVDs);
-        cout << "\n\t\tWould you like to add a movie \"" << formatString(title) << "\" ?" << endl;
+        cout << "\n\t\tWould you like to add a movie \""
+             << formatString(title) << "\" ?" << endl;
         if (displayConfirmation() == 1){
             movies.insert(newMovie);
-            cout << "\n\t\t\"" << formatString(title) << "\" has been added to the collection" << endl << endl;
+            cout << "\n\t\t\"" << formatString(title)
+                 << "\" has been added to the collection" << endl << endl;
         }
         else {
-            cout << "\n\t\tMovie adding operation has been rejected.\n\t\tBack to main menu" << endl << endl;
+            cout << "\n\t\tMovie adding operation has been rejected." << endl;
+            cout << "\t\tBack to main menu" << endl << endl;
         }
     }
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -69,18 +73,23 @@ void StaffOperations::addDVDsOfExistingMovie(MovieCollection& movies) {
     }
     int numDVDs = promptNumDVDs();
     if (exist) {
-        cout << "\n\t\tWould you like to add (" << numDVDs << ") DVDs to \"" << formatString(title) << "\"" << endl;
-        if (displayConfirmation() == 1){
+        cout << "\n\t\tWould you like to add (" << numDVDs << ") DVDs to \""
+             << formatString(title) << "\"" << endl;
+        if (displayConfirmation() == 1) {
             Movie* movieAddress = movies.getItemAddress(title);
             movieAddress->addDVDs(numDVDs);
-            cout << "\n\t\t" << numDVDs << " DVDs have been added to \""<< formatString(title) << "\"" << endl << endl;
-            cout << "\t\t" << setw(15) << left << "Title" << setw(20)<< right << "Number of DVDs" << endl << endl;
-            cout << "\t\t" << setw(15) << left << formatString(title)<< setw(20) << right << movieAddress->getNumDVDs() << endl << endl;
+            cout << "\n\t\t" << numDVDs << " DVDs have been added to \""
+                 << formatString(title) << "\"" << endl << endl;
+            cout << "\t\t" << setw(15) << left << "Title" << setw(20)
+                 << right << "Number of DVDs" << endl << endl;
+            cout << "\t\t" << setw(15) << left << formatString(title)
+                 << setw(20) << right << movieAddress->getNumDVDs() << endl << endl;
             movieAddress = NULL;
             delete movieAddress;
         }
         else {
-            cout << "\n\t\tMovie adding DVD operation has been rejected.\n\t\tBack to main menu" << endl << endl;
+            cout << "\n\t\tMovie adding DVD operation has been rejected." << endl;
+            cout << "\t\tBack to main menu" << endl << endl;
         }
     }
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -103,16 +112,22 @@ void StaffOperations::removeDVDs(MovieCollection& movies) {
             cout << "\n\t\tNumber of DVD is 0" << endl;
         } else if (movieAddress->getRecord().empty() && movieAddress->getNumDVDs() != 0) {
             if (movieAddress->getNumDVDs() - numDVDs < 0) {
-                cout << "\n\t\tThe number entered is greater the number of existing DVDs" << endl << endl;
+                cout << "\n\t\tThe number entered is greater the number of existing DVDs";
+                cout << endl << endl;
             } else {
-                cout << "\n\t\tWould you like to remove (" << numDVDs << ") DVDs from \"" << formatString(title) << "\""<<endl;
+                cout << "\n\t\tWould you like to remove (" << numDVDs << ") DVDs from \""
+                     << formatString(title) << "\""<<endl;
                 if (displayConfirmation() == 1){
                     movieAddress->removeDVDs(numDVDs);
-                    cout << "\n\t\t" << numDVDs << " DVDs have been removed from \"" << formatString(title) << "\"" << endl << endl;
-                    cout << "\t\t" << setw(15) << left << "Title" << setw(20) << right << "Number of DVDs" << endl << endl;
-                    cout << "\t\t" << setw(15) << left << formatString(title) << setw(20)<< right << movieAddress->getNumDVDs() << endl << endl;
+                    cout << "\n\t\t" << numDVDs << " DVDs have been removed from \""
+                         << formatString(title) << "\"" << endl << endl;
+                    cout << "\t\t" << setw(15) << left << "Title" << setw(20)
+                         << right << "Number of DVDs" << endl << endl;
+                    cout << "\t\t" << setw(15) << left << formatString(title)
+                         << setw(20)<< right << movieAddress->getNumDVDs() << endl << endl;
                 } else {
-                    cout << "\n\t\tMovie remove DVD operation has been rejected.\n\t\tBack to main menu" << endl << endl;
+                    cout << "\n\t\tMovie remove DVD operation has been rejected." << endl;
+                    cout << "\t\tBack to main menu" << endl << endl;
                 }
             }
         } else {
@@ -136,13 +151,15 @@ void StaffOperations::removeMovie(MovieCollection& movies) {
     } else {
         Movie* movieAddress = movies.getItemAddress(title);
         if (movieAddress->getRecord().empty()) {
-            cout<<"\n\t\tWould you like to remove \"" << formatString(title) <<"\""<<endl;
-                if (displayConfirmation() == 1){
-                    movies.erase(title);
-                    cout << "\n\t\t\"" << formatString(title)<< "\" has been remove from the collection" << endl << endl;
-                }
-                else
-                    cout << "\n\t\tMovie remove operation has been rejected.\n\t\tBack to main menu" << endl << endl;
+            cout << "\n\t\tWould you like to remove \"" << formatString(title) << "\"" << endl;
+            if (displayConfirmation() == 1){
+                movies.erase(title);
+                cout << "\n\t\t\"" << formatString(title)
+                     << "\" has been remove from the collection" << endl << endl;
+            } else {
+                cout << "\n\t\tMovie remove operation has been rejected." << endl;
+                cout << "\t\tBack to main menu" << endl << endl;
+            }
         } else {
             cout << "\n\t\tERROR: One or more DVDs are being rented." << endl << endl;
         }
@@ -171,12 +188,13 @@ void StaffOperations::registerCustomer(CustomerCollection& customers) {
     std::string password = promptPassword();
     newCustomer.setPassword(password);
     cout << "\n\t\tWould you like to register \"" << formatString(name) << "\" ?" << endl;
-    if(displayConfirmation() == 1){
+    if (displayConfirmation() == 1) {
         customers.addCustomer(newCustomer);
-        cout << "\n\t\t\"" << formatString(name) << "\" has been registered." << endl << endl;
-    }
-    else {
-        cout << "\n\t\tCustomer's registration operation has been rejected\n\t\tBack to main menu" << endl;
+        cout << "\n\t\t\"" << formatString(name)
+             << "\" has been registered." << endl << endl;
+    } else {
+        cout << "\n\t\tCustomer's registration operation has been rejected." << endl;
+        cout << "\t\tBack to main menu" << endl;
     }
      cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
@@ -199,15 +217,18 @@ void StaffOperations::removeCustomer(CustomerCollection& customers) {
     } else {
         if (customers.customerAt(index).getRecord().size() > 0) {
             cout << "\n\t\tERROR: The customer is currently renting "
-                 << customers.customerAt(index).getRecord().size() << " DVDs" << endl << endl;
+                 << customers.customerAt(index).getRecord().size() << " DVDs"
+                 << endl << endl;
         } else {
-            cout << "\n\t\tWould you like to remove \"" << formatString(name) << "\" From the list ?" << endl;
-            if(displayConfirmation() == 1){
+            cout << "\n\t\tWould you like to remove \""
+                 << formatString(name) << "\" From the list ?" << endl;
+            if (displayConfirmation() == 1) {
                 customers.deleteCustomer(name);
-                cout << "\n\t\t\"" << formatString(name) << "\" has been deleted" << endl << endl;
-            }
-            else {
-                cout << "\n\t\tRemove customer's operation has been rejected\n\t\tBack to main menu"<< endl << endl;
+                cout << "\n\t\t\"" << formatString(name)
+                     << "\" has been deleted" << endl << endl;
+            } else {
+                cout << "\n\t\tRemove customer's operation has been rejected" << endl;
+                cout << "\t\tBack to main menu"<< endl << endl;
             }
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
@@ -247,7 +268,8 @@ void StaffOperations::findRentalRecord(MovieCollection& movies) {
         Movie* movieAddress = movies.getItemAddress(title);
         std::vector<std::string> record = movieAddress->getRecord();
         if (record.size() == 0) {
-            cout << "\n\t\t\"" << formatString(title) << "\" has not been rented" << endl << endl;
+            cout << "\n\t\t\"" << formatString(title)
+                 << "\" has not been rented" << endl << endl;
         } else {
             for (std::vector<std::string>::size_type i = 0; i != record.size(); i++) {
             cout << "\n\t\t" << i+1 << ") " << formatString(record[i]) << endl;

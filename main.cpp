@@ -328,21 +328,27 @@ string getStaffPassword() {
     cout << "\t\t\t     Password: ";
         while(true){
             temppassword = getch();
-            if ( temppassword == 13) {
+            if (temppassword == 13) {
                 pos = 0;
                 break;
             }
-            if ( temppassword == 8) { // discard * and char from buffer
-                    if(pos > 0){
-                    cout <<"\b \b"; cpassword[pos-1] = '\0'; pos--; }
-                    }
-            else { // display * and put char to buffer
-                cout << "*"; cpassword[pos] = temppassword; cpassword[pos+1] = '\0'; pos++;
+            if (temppassword == 8) { // discard * and char from buffer
+                if(pos > 0) {
+                cout <<"\b \b";
+                cpassword[pos-1] = '\0';
+                pos--;
                 }
-        if (pos <= 0) pos = 0;
+            } else { // display * and put char to buffer
+                cout << "*";
+                cpassword[pos] = temppassword;
+                cpassword[pos+1] = '\0'; pos++;
+            }
+            if (pos <= 0) {
+                pos = 0;
+            }
         }
-        password = string(cpassword);
-        return password;
+    password = string(cpassword);
+    return password;
 }
 
 /// \brief Prompts the user a password.
@@ -358,21 +364,26 @@ string getCustomerPassword() {
         cout << "\t\t\t     Password: ";
             while(true){
                 temppassword = getch();
-                if (temppassword == 13){
+                if (temppassword == 13) {
                     pos = 0;
                     break;
-                    }
+                }
                 if (temppassword == 8) {
-                        if(pos > 0){
-                        cout <<"\b \b"; cpassword[pos-1] = '\0'; pos--;
-                        }
+                    if(pos > 0) {
+                        cout <<"\b \b";
+                        cpassword[pos-1] = '\0';
+                        pos--;
                     }
-                else {
-                    cout<<"*"; cpassword[pos] = temppassword; cpassword[pos+1] = '\0'; pos++;
-                    }
-            if (pos <= 0) pos = 0;
+                } else {
+                    cout << "*";
+                    cpassword[pos] = temppassword;
+                    cpassword[pos+1] = '\0'; pos++;
+                }
+                if (pos <= 0) {
+                    pos = 0;
+                }
             }
-            password = string (cpassword);
+        password = string (cpassword);
         for (unsigned int i = 0; i < password.length(); i++) {
             if (!isdigit(password[i])) {
                 allDigits = false;
