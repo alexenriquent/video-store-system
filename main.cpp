@@ -298,7 +298,7 @@ string getStaffPassword() {
             }
             if (temppassword == 8) { // discard * and char from buffer
                 if(pos > 0) {
-                cout <<"\b \b";
+                cout << "\b \b";
                 cpassword[pos-1] = '\0';
                 pos--;
                 }
@@ -334,7 +334,7 @@ string getCustomerPassword() {
                 }
                 if (temppassword == 8) {
                     if(pos > 0) {
-                        cout <<"\b \b";
+                        cout << "\b \b";
                         cpassword[pos-1] = '\0';
                         pos--;
                     }

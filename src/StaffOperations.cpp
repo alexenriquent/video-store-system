@@ -450,12 +450,12 @@ std::string StaffOperations::promptPassword() {
     std::string password;
     char temppassword;
     char cpassword[50];
-    int pos=0;
+    int pos = 0;
     bool allDigits;
     do {
         allDigits = true;
         std::cout << "\t\tEnter Password: ";
-            while(true){
+            while (true) {
                 temppassword = getch();
                 if (temppassword == 13) {
                     pos = 0;
@@ -463,7 +463,7 @@ std::string StaffOperations::promptPassword() {
                 }
                 if (temppassword == 8) {
                     if(pos > 0) {
-                        std::cout <<"\b \b";
+                        std::cout << "\b \b";
                         cpassword[pos-1] = '\0';
                         pos--;
                     }
