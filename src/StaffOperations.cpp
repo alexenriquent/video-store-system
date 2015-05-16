@@ -5,6 +5,7 @@
 /// \date April, 2015
 
 #include "StaffOperations.h"
+#include <conio.h>
 
 using namespace std;
 
@@ -187,7 +188,7 @@ void StaffOperations::registerCustomer(CustomerCollection& customers) {
     cout << "\n\t\tCustomer's username: " << newCustomer.getUsername() << endl;
     std::string password = promptPassword();
     newCustomer.setPassword(password);
-    cout << "\n\t\tWould you like to register \"" << formatString(name) << "\" ?" << endl;
+    cout << "\n\n\t\tWould you like to register \"" << formatString(name) << "\" ?" << endl;
     if (displayConfirmation() == 1) {
         customers.addCustomer(newCustomer);
         cout << "\n\t\t\"" << formatString(name)
@@ -369,6 +370,7 @@ int StaffOperations::promptDuration() {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         if(duration <= 0) {
+            cout << endl;
             displayErrorMessage();
             cout << "\t\tDuration of the movie must be greater than 0" << endl << endl;
         }
@@ -393,6 +395,7 @@ int StaffOperations::promptNumDVDs() {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         if(numDVDs <= 0) {
+            cout << endl;
             displayErrorMessage();
             cout << "\t\tA number of DVDs must be greater than 0" << endl << endl;
         }
@@ -433,8 +436,9 @@ std::string StaffOperations::promptPhoneNumber() {
             }
         }
         if (phoneNumber.length() != 10 || allDigitsPhoneNumber == false)  {
+            cout << endl;
             displayErrorMessage();
-            cout << "\t\tPlease enter [10 Digits] phone number" << endl;
+            cout << "\t\tPlease enter [10 Digits] phone number\n" << endl;
         }
     } while (phoneNumber.length() != 10 || allDigitsPhoneNumber == false);
     return phoneNumber;
@@ -444,17 +448,42 @@ std::string StaffOperations::promptPhoneNumber() {
 /// \return string - Password prompted by user.
 std::string StaffOperations::promptPassword() {
     std::string password;
+    char temppassword;
+    char cpassword[50];
+    int pos=0;
     bool allDigits;
     do {
         allDigits = true;
-        cout << "\t\tEnter Password: ";
-        getline(cin, password);
+        std::cout << "\t\tEnter Password: ";
+            while(true){
+                temppassword = getch();
+                if (temppassword == 13) {
+                    pos = 0;
+                    break;
+                }
+                if (temppassword == 8) {
+                    if(pos > 0) {
+                        std::cout <<"\b \b";
+                        cpassword[pos-1] = '\0';
+                        pos--;
+                    }
+                } else {
+                    std::cout << "*";
+                    cpassword[pos] = temppassword;
+                    cpassword[pos+1] = '\0'; pos++;
+                }
+                if (pos <= 0) {
+                    pos = 0;
+                }
+            }
+        password = string (cpassword);
         for (int i = 0; i < password.length(); i++) {
             if (!isdigit(password[i])) {
                 allDigits = false;
             }
         }
         if (password.length() != 4 || allDigits == false)  {
+            cout << endl;
             displayErrorMessage();
             cout << "\t\tPlease enter 4-digit password" << endl << endl;
         }
