@@ -31,7 +31,7 @@ void displayLoginScreen(int loginOption); // Function to display login screen.
 bool staffLogin(int loginOption); // Function for staff authentication.
 bool customerLogin(CustomerCollection& customers,
                    int& customerIndex, int loginOption); // Function for customer authentication.
-string getUsername(); // Function to get a username from user.
+string getUsername(); // Function to get a user name from user.
 string getStaffPassword(); // Function to get staff's password from user.
 string getCustomerPassword(); // Function to get a customer's password from user.
 void displayStaffMenu(); // Function to display staff sub-menu options.
@@ -39,50 +39,14 @@ void displayCustomerMenu(); // Function to display customer sub-menu options.
 int getStaffOption(); // Function to get a selected staff menu option from user.
 int getCustomerOption(); // Function to get a selected customer menu option from user.
 int confirmLogout(); // Function for logout confirmation.
+void displaySuccessfulLoginMessage(); // Function to display a message if a user is successfully authenticated.
+void displayFailedLoginMessage(); // Function to display a message if the authentication process fails.
 void displayContinueMessage(); // Function to display the continue message.
 void displayErrorMessage(); // Function to display the error message for any invalid input.
 
 int main() {
-
-    Customer c;
-    c.setName("Jim Chapman");
-    c.setUserName();
-    c.setAddress("London, England");
-    c.setPhoneNumber("0411234567");
-    c.setPassword("8888");
-
-    Customer a;
-    a.setName("Alice Wonderland");
-    a.setUserName();
-    a.setAddress("Wonderland, Another Dimension");
-    a.setPhoneNumber("0455123567");
-    a.setPassword("8888");
-
-    Movie h;
-    h.setTitle("Home");
-    h.setStarring("Jim Parsons");
-    h.setDirector("Tim Johnson");
-    h.setGenre("Animated");
-    h.setClassification("PG");
-    h.setReleaseDate("27/03/2015");
-    h.setDuration(94);
-    h.setNumDVDs(10);
-    Movie r;
-    r.setTitle("The Riot Club");
-    r.setStarring("Sam Claflin");
-    r.setDirector("Lone Scherfig");
-    r.setGenre("Drama");
-    r.setClassification("R");
-    r.setReleaseDate("27/03/2015");
-    r.setDuration(107);
-    r.setNumDVDs(10);
-
     MovieCollection movieCollection;
-    movieCollection.insert(h);
-    movieCollection.insert(r);
     CustomerCollection customerCollection;
-    customerCollection.addCustomer(c);
-    customerCollection.addCustomer(a);
     StaffOperations staff;
     CustomerOperations customer;
     int login;
@@ -99,7 +63,7 @@ int main() {
             case 1:
                 authenticated = staffLogin(login);
                 if (authenticated) {
-                    cout << "\n\n\t\tLogin successfully" << endl;
+                    displaySuccessfulLoginMessage();
                     displayContinueMessage();
                     do {
                         displayStaffMenu();
@@ -148,7 +112,7 @@ int main() {
                     } while (staffOperation != -1);
                     system("CLS");
                 } else {
-                    cout << "\n\n\t\tIncorrect username or password, please login again" << endl;
+                    displayFailedLoginMessage();
                     displayContinueMessage();
                     break;
                 }
@@ -159,7 +123,7 @@ int main() {
                 authenticated = customerLogin(customerCollection, index, login);
                 currentCustomer = customerCollection.getCustomer(index);
                 if (authenticated) {
-                        cout << "\n\n\t\tLogin successfully" << endl;
+                        displaySuccessfulLoginMessage();
                         displayContinueMessage();
                     do {
                         displayCustomerMenu();
@@ -201,7 +165,7 @@ int main() {
                     currentCustomer == NULL;
                     system("CLS");
                 } else {
-                    cout << "\n\n\t\tIncorrect username or password, please login again" << endl;
+                    displayFailedLoginMessage();
                     displayContinueMessage();
                     break;
                 }
@@ -496,6 +460,16 @@ int confirmLogout() {
         }
     } while (confirm < 1 || confirm > 2);
     return confirm;
+}
+
+/// \brief Displays a message if a user is successfully authenticated.
+void displaySuccessfulLoginMessage() {
+    cout << "\n\n\t\tLogin successfully" << endl;
+}
+
+/// \brief Displays a message if the authentication process fails.
+void displayFailedLoginMessage() {
+    cout << "\n\n\t\tIncorrect username or password, please login again" << endl;
 }
 
 /// \brief Displays a message and wait for an input (ENTER key) from user.
